@@ -15,7 +15,7 @@ This project showcases my skills, projects, and experience as a Software Enginee
 ---
 
 ## 🌐 Live Demo
-[Click here to view portfolio](https://tourmaline-wisp-f23a9c.netlify.app/)  
+[Click here to view portfolio](https://my-portfolio-nuaw.vercel.app/)  
 
 ---
 
