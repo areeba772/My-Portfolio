@@ -183,34 +183,40 @@
     #about .about-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
     }
-    .about-img-wrap {
-      position: relative;
-    }
+    .about-img-wrap { position: relative; padding: 1rem; }
     .about-img-placeholder {
       width: 100%; aspect-ratio: 4/5;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: var(--muted); font-size: .85rem; gap: .5rem;
-      position: relative; overflow: hidden;
+      border-radius: 20px;
+      overflow: hidden; position: relative;
     }
-    .about-img-placeholder svg { width: 48px; height: 48px; opacity: .3; }
-    .about-img-label {
-      position: absolute; bottom: 16px; left: 16px;
-      background: var(--accent); color: #0d0d0f;
-      font-size: .72rem; font-weight: 700; letter-spacing: .08em;
-      padding: .3rem .8rem; border-radius: 100px; text-transform: uppercase;
-    }
+    .about-img-placeholder img { width:100%;height:100%;object-fit:cover;display:block; }
     .about-badge {
-      position: absolute; top: -16px; right: -16px;
+      position: absolute; top: 0; right: 0;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1rem 1.2rem; text-align: center;
+      border-radius: 14px; padding: 1rem 1.2rem; text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
     }
-    .about-badge strong { font-family: var(--display); font-size: 2rem; color: var(--accent); display: block; }
-    .about-badge span { font-size: .72rem; color: var(--muted); }
-
+    .about-badge strong { font-family: var(--display); font-size: 1.8rem; color: var(--accent); display: block; line-height:1; }
+    .about-badge span { font-size: .68rem; color: var(--muted); }
+    .about-exp-chip {
+      position: absolute; bottom: 0; left: 0;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: .9rem 1.2rem;
+      display: flex; align-items: center; gap: .6rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
+    }
+    .about-exp-num { font-family: var(--display); font-size: 1.6rem; font-weight: 800; color: var(--accent3); line-height: 1; }
+    .about-exp-label { font-size: .68rem; color: var(--muted); line-height: 1.3; max-width: 60px; }
+    .about-mini-stats {
+      display: flex; gap: 0; margin: 1.8rem 0 1.5rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+    }
+    .about-mini-stat { text-align: center; flex: 1; padding: 1.2rem .5rem; border-right: 1px solid var(--border); }
+    .about-mini-stat:last-child { border-right: none; }
+    .ams-num { font-family: var(--display); font-size: 1.8rem; font-weight: 800; color: var(--accent); display: block; line-height: 1; }
+    .ams-label { font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: .3rem; display: block; }
     .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; }
     .services-list { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
     .service-tag {
@@ -240,44 +246,48 @@
 
     /* ── PROJECTS ── */
     .projects-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;
+      display: flex; flex-direction: column; gap: 2rem;
     }
     .project-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 20px; overflow: hidden;
-      transition: transform .25s, border-color .25s;
+      display: grid; grid-template-columns: 320px 1fr;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
       cursor: pointer;
     }
-    .project-card:hover { transform: translateY(-6px); border-color: var(--accent3); }
+    .project-card:hover { transform: translateY(-4px); border-color: var(--accent3); box-shadow: 0 16px 48px rgba(0,0,0,.3); }
     .project-thumb {
-      height: 200px; display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; position: relative;
+      height: 100%; min-height: 220px; display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; position: relative; flex-shrink: 0;
     }
-    .project-body { padding: 1.6rem; }
+    .project-body { padding: 2rem 2.2rem; display: flex; flex-direction: column; justify-content: center; }
     .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .9rem; }
     .project-tag {
       background: rgba(127,255,110,.08); border: 1px solid rgba(127,255,110,.2);
       color: var(--accent); font-size: .7rem; font-weight: 600;
       padding: .2rem .7rem; border-radius: 100px; letter-spacing: .06em;
     }
-    .project-name { font-family: var(--display); font-weight: 700; font-size: 1.15rem; margin-bottom: .5rem; }
-    .project-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.2rem; }
+    .project-name { font-family: var(--display); font-weight: 700; font-size: 1.35rem; margin-bottom: .6rem; }
+    .project-desc { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.4rem; flex: 1; }
     .project-link {
-      font-size: .82rem; font-weight: 600; color: var(--accent3);
-      text-decoration: none; display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .85rem; font-weight: 600; color: var(--accent3);
+      text-decoration: none; display: inline-flex; align-items: center; gap: .4rem;
+      background: rgba(94,164,255,.08); border: 1px solid rgba(94,164,255,.2);
+      padding: .5rem 1.2rem; border-radius: 100px; align-self: flex-start;
+      transition: background .2s, border-color .2s;
     }
-    .project-link:hover { text-decoration: underline; }
+    .project-link:hover { background: rgba(94,164,255,.15); border-color: var(--accent3); text-decoration: none; }
     /* Add Project Card */
     .add-project-card {
       background: transparent;
       border: 2px dashed var(--border);
-      border-radius: 20px; min-height: 340px;
-      display: flex; flex-direction: column;
+      border-radius: 20px; min-height: 120px;
+      display: flex; flex-direction: row;
       align-items: center; justify-content: center;
       gap: .7rem; cursor: pointer;
-      transition: border-color .2s;
+      transition: border-color .2s, background .2s;
     }
-    .add-project-card:hover { border-color: var(--accent); }
+    .add-project-card:hover { border-color: var(--accent); background: rgba(127,255,110,.03); }
     .add-project-card span { font-size: .85rem; color: var(--muted); }
 
     /* ── CERTIFICATES ── */
@@ -422,9 +432,12 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      #about .about-grid { grid-template-columns: 1fr; }
+      #about .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-img-wrap { max-width: 400px; margin: 0 auto; }
       .contact-wrap { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-thumb { min-height: 180px; }
     }
     @media (max-width: 680px) {
       .nav-links, .nav-cta { display: none; }
@@ -548,19 +561,50 @@
 
 <!-- ─── ABOUT ─── -->
 <section id="about">
-  <div class="about-img-placeholder">
-  <img src="pic.jpeg" alt="About Image" />
+  <div class="about-grid">
+    <!-- Left: Image -->
+    <div class="about-img-wrap fade-up">
+      <div class="about-img-placeholder">
+        <img src="pic.jpeg" alt="Areeba Riaz" style="width:100%;height:100%;object-fit:cover;border-radius:16px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:1rem;color:var(--muted);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="64" height="64"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span style="font-size:.85rem;">Your Photo Here</span>
+        </div>
       </div>
       <div class="about-badge">
         <strong>100%</strong>
         <span>Job Success</span>
       </div>
+      <!-- Floating experience chip -->
+      <div class="about-exp-chip">
+        <span class="about-exp-num">2+</span>
+        <span class="about-exp-label">Years of Experience</span>
+      </div>
     </div>
+
+    <!-- Right: Text -->
     <div class="about-text fade-up">
       <div class="section-label">About Me</div>
       <h2 class="section-title">Crafting Digital Experiences That Work</h2>
-      <p>I'm a freelance web developer based in Lahore with a passion for turning ideas into production-ready digital products. Whether you need a stunning landing page or a complex full-stack system, I deliver clean, maintainable code on time.</p>
-      <p>My work spans frontend interfaces built with React and Tailwind, robust Laravel APIs, complete MERN applications, and meticulous data entry services for businesses of all sizes.</p>
+      <p>I'm <strong style="color:var(--text)">Areeba Riaz</strong>, a passionate freelance web developer based in <strong style="color:var(--accent)">Lahore, Pakistan</strong>. I turn ideas into fast, production-ready digital products — from pixel-perfect UIs to powerful full-stack systems.</p>
+      <p>With expertise in <strong style="color:var(--text)">React, Laravel, and the MERN stack</strong>, I build web apps that are clean, scalable, and delivered on time. I also offer meticulous data-entry services for businesses of all sizes.</p>
+
+      <!-- Mini stats row -->
+      <div class="about-mini-stats">
+        <div class="about-mini-stat">
+          <span class="ams-num">15+</span>
+          <span class="ams-label">Projects</span>
+        </div>
+        <div class="about-mini-stat">
+          <span class="ams-num">10+</span>
+          <span class="ams-label">Clients</span>
+        </div>
+        <div class="about-mini-stat">
+          <span class="ams-num">3</span>
+          <span class="ams-label">Certifications</span>
+        </div>
+      </div>
+
       <div class="services-list">
         <span class="service-tag">⚡ Frontend Dev</span>
         <span class="service-tag">🔧 Laravel</span>
@@ -569,8 +613,10 @@
         <span class="service-tag">🎨 UI/UX</span>
         <span class="service-tag">🔌 REST APIs</span>
       </div>
-      <br>
-      <a href="#contact" class="btn-primary">Let's Work Together</a>
+      <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+        <a href="#contact" class="btn-primary">Let's Work Together</a>
+        <a href="#projects" class="btn-outline">View My Work</a>
+      </div>
     </div>
   </div>
 </section>
@@ -626,9 +672,12 @@
   <h2 class="section-title fade-up">Selected Projects</h2>
   <p class="section-sub fade-up">A few things I've built for clients and personal growth.</p>
   <div class="projects-grid" id="projectsGrid">
-    <!-- Sample Project 1 -->
+    <!-- Project 1 -->
     <div class="project-card fade-up">
-      <div class="project-thumb" style="background: linear-gradient(135deg,#1a2a1a,#0d1a0d)">🛒</div>
+      <div class="project-thumb" style="background: linear-gradient(135deg,#0d2218,#0a1a0f)">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80" alt="E-Commerce" style="width:100%;height:100%;object-fit:cover;opacity:.7;" onerror="this.style.display='none'"/>
+        <span style="position:absolute;font-size:3.5rem;">🛒</span>
+      </div>
       <div class="project-body">
         <div class="project-tags">
           <span class="project-tag">Laravel</span>
@@ -636,13 +685,16 @@
           <span class="project-tag">Bootstrap</span>
         </div>
         <div class="project-name">E-Commerce Platform</div>
-        <div class="project-desc">A full-featured online store with cart, payment integration, and admin dashboard built in Laravel.</div>
+        <div class="project-desc">A full-featured online store with product catalog, shopping cart, Stripe payment integration, and a powerful admin dashboard built with Laravel. Includes order tracking and email notifications.</div>
         <a href="#" class="project-link">View Project →</a>
       </div>
     </div>
-    <!-- Sample Project 2 -->
+    <!-- Project 2 -->
     <div class="project-card fade-up">
-      <div class="project-thumb" style="background: linear-gradient(135deg,#0d1a2a,#0d0d1a)">📋</div>
+      <div class="project-thumb" style="background: linear-gradient(135deg,#0d1a2a,#060d1a)">
+        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&q=80" alt="Task App" style="width:100%;height:100%;object-fit:cover;opacity:.6;" onerror="this.style.display='none'"/>
+        <span style="position:absolute;font-size:3.5rem;">📋</span>
+      </div>
       <div class="project-body">
         <div class="project-tags">
           <span class="project-tag">MERN</span>
@@ -650,13 +702,16 @@
           <span class="project-tag">MongoDB</span>
         </div>
         <div class="project-name">Task Management App</div>
-        <div class="project-desc">Real-time task board with drag-and-drop, team collaboration, and JWT authentication.</div>
+        <div class="project-desc">Real-time collaborative task board with drag-and-drop, team workspaces, and JWT authentication. Built using the full MERN stack with WebSockets for live updates across team members.</div>
         <a href="#" class="project-link">View Project →</a>
       </div>
     </div>
-    <!-- Sample Project 3 -->
+    <!-- Project 3 -->
     <div class="project-card fade-up">
-      <div class="project-thumb" style="background: linear-gradient(135deg,#1a0d1a,#2a0d2a)">💼</div>
+      <div class="project-thumb" style="background: linear-gradient(135deg,#1a0d2a,#0d0618)">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="Dashboard" style="width:100%;height:100%;object-fit:cover;opacity:.6;" onerror="this.style.display='none'"/>
+        <span style="position:absolute;font-size:3.5rem;">💼</span>
+      </div>
       <div class="project-body">
         <div class="project-tags">
           <span class="project-tag">React</span>
@@ -664,13 +719,13 @@
           <span class="project-tag">REST API</span>
         </div>
         <div class="project-name">Freelancer Dashboard</div>
-        <div class="project-desc">A clean client-facing dashboard for tracking projects, invoices, and deadlines.</div>
+        <div class="project-desc">A clean, client-facing dashboard for tracking active projects, invoices, and deadlines. Features interactive charts, PDF invoice generation, and a responsive design optimised for all devices.</div>
         <a href="#" class="project-link">View Project →</a>
       </div>
     </div>
     <!-- Add Project Card -->
     <div class="add-project-card fade-up" onclick="openModal('project')">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b6b78" stroke-width="2">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6b6b78" stroke-width="2">
         <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
       </svg>
       <span>Add Your Project</span>
